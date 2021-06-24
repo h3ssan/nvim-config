@@ -1,6 +1,10 @@
 let mapleader = "\<Space>"
 
 call plug#begin('~/.config/nvim/plugged')
+" Dependencies: clang nodejs npm yarn typescript
+
+" C/C++ autocomplete
+Plug 'deoplete-plugins/deoplete-clang'
 
 " colorscheme
 Plug 'morhetz/gruvbox'
