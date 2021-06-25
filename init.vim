@@ -1,10 +1,30 @@
-let mapleader = "\<Space>"
+set syntax=on
+set number
+set relativenumber
+set nohlsearch
+set incsearch
+
+
+
+" Remapping
+let mapleader = " "
+inoremap ,, <Esc>
+nnoremap <Leader>f :NERDTreeToggle<CR>
+"" Windows
+nnoremap <Leader>h :new<CR>
+nnoremap <Leader>v :vnew<CR>
 
 call plug#begin('~/.config/nvim/plugged')
-" Dependencies: clang nodejs npm yarn typescript
+" All needed: clang nodejs npm yarn typescript
 
-" C/C++ autocomplete
+" C/C++ autocomplete; Must install `clang`
 Plug 'deoplete-plugins/deoplete-clang'
+
+" Nerd file tree
+Plug 'scrooloose/nerdtree'
+
+" Nerd Commenter
+Plug 'scrooloose/nerdcommenter'
 
 " colorscheme
 Plug 'morhetz/gruvbox'
@@ -97,3 +117,48 @@ Plug 'wincent/pinnacle'
 Plug 'andys8/vim-elm-syntax'
 
 call plug#end()
+
+" Rename tabs to show tab number.
+if exists("+showtabline")
+    function! MyTabLine()
+        let s = ''
+        let wn = ''
+        let t = tabpagenr()
+        let i = 1
+        while i <= tabpagenr('$')
+            let buflist = tabpagebuflist(i)
+            let winnr = tabpagewinnr(i)
+            let s .= '%' . i . 'T'
+            let s .= (i == t ? '%1*' : '%2*')
+            let s .= ' '
+            let wn = tabpagewinnr(i,'$')
+
+            let s .= '%#TabNum#'
+            let s .= i
+            " let s .= '%*'
+            let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+            let bufnr = buflist[winnr - 1]
+            let file = bufname(bufnr)
+            let buftype = getbufvar(bufnr, 'buftype')
+            if buftype == 'nofile'
+                if file =~ '\/.'
+                    let file = substitute(file, '.*\/\ze.', '', '')
+                endif
+            else
+                let file = fnamemodify(file, ':p:t')
+            endif
+            if file == ''
+                let file = '[No Name]'
+            endif
+            let s .= ' ' . file . ' '
+            let i = i + 1
+        endwhile
+        let s .= '%T%#TabLineFill#%='
+        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+        return s
+    endfunction
+    set stal=2
+    set tabline=%!MyTabLine()
+    set showtabline=1
+    highlight link TabNum Special
+endif
