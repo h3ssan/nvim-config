@@ -14,6 +14,13 @@ nnoremap <Leader>f :NERDTreeToggle<CR>
 nnoremap <Leader>h :new<CR>
 nnoremap <Leader>v :vnew<CR>
 
+" Spaces & Tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set copyindent
 
 call plug#begin('~/.config/nvim/plugged')
 
