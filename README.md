@@ -1,5 +1,6 @@
 ## Dependencies
 * clang
+* ccls
 * nodejs
 * npm
 * yarn

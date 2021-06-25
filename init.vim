@@ -5,20 +5,19 @@ set nohlsearch
 set incsearch
 
 
-
 " Remapping
 let mapleader = " "
 inoremap ,, <Esc>
 nnoremap <Leader>f :NERDTreeToggle<CR>
-"" Windows
+" Windows
 nnoremap <Leader>h :new<CR>
 nnoremap <Leader>v :vnew<CR>
 
+
 call plug#begin('~/.config/nvim/plugged')
-" All needed: clang nodejs npm yarn typescript
 
 " C/C++ autocomplete; Must install `clang`
-Plug 'deoplete-plugins/deoplete-clang'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Nerd file tree
 Plug 'scrooloose/nerdtree'
