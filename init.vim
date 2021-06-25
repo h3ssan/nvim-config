@@ -6,6 +6,7 @@ set incsearch
 
 
 " Remapping
+nnoremap <SPACE> <Nop>
 let mapleader = " "
 inoremap ,, <Esc>
 nnoremap <Leader>f :NERDTreeToggle<CR>
