@@ -9,6 +9,7 @@ set incsearch
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 inoremap ,, <Esc>
+inoremap <C-o> <Esc>O
 nnoremap <Leader>f :NERDTreeToggle<CR>
 " Windows
 nnoremap <Leader>h :new<CR>
