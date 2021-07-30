@@ -11,10 +11,10 @@ let mapleader = " "
 inoremap ,, <Esc>
 inoremap <C-o> <Esc>O
 inoremap <C-a> <Esc>A
-nnoremap <Leader>f :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeToggle<CR>
 " Windows
-nnoremap <Leader>h :new<CR>
-nnoremap <Leader>v :vnew<CR>
+nnoremap <leader>h :new<CR>
+nnoremap <leader>v :vnew<CR>
 
 " Spaces & Tabs
 set tabstop=4
